@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SISTEMA DE RECOMENDACIÓN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <!--<link rel="icon" type="image/x-icon" href="./img/escudo.png">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js"></script>
+    </head>
+    <body>
+        <div class="encabezado">
+            <h1><b>SISTEMA DE RECOMENDACIÓN BASADA EN CONTENIDO</b></h1>
+            <div class="formulario">
+                <p class="pMedio">Selecciona las peliculas por usuario.</p>
+                <table id="peliculas_seleccionadas" class="enmarcar">
+                    <tr>
+                        <th class="enmarcar">Película</th>
+                        <th class="enmarcar">User 1</th>
+                        <th class="enmarcar">User 2</th>
+                        <th class="enmarcar">User 3</th>
+                        <th class="enmarcar">User 4</th>
+                        <th class="enmarcar">User 5</th>
+                        <th class="enmarcar">User 6</th>
+                        <th class="enmarcar">User 7</th>
+                    </tr>
+                    <!-- Rellenamos las películas -->
+                    <script>
+                        const movies = ["The Princess Diaries", "13 Going on 30", "Love, Rosie", "Avengers: Infinity War", "Deadpool 3", "X-Men: Dark Phoenix", "Toy Story", "Ratatouille", "The Incredibles", "Legally Blonde", "White Chicks", "Mean Girls"];
+                        const table = document.getElementById("peliculas_seleccionadas");
+                        movies.forEach((movie) => {
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                <td class="enmarcar">${movie}</td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 1"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 2"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 3"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 4"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 5"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 6"></td>
+                                <td class="enmarcar"><input type="checkbox" data-movie="${movie}" data-user="User 7"></td>
+                            `;
+                            table.appendChild(row);
+                        });
+                    </script>
+                </table>
+                
+                <div class="intro">
+                    <button onclick="displayRecommendations()" class="return">Generar Recomendaciones</button>
+                </div>
+                
+            
+                <div id="cy"></div>
+                <div id="controls" class="intro">
+                    <button id="zoom-in"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                    <button id="center-graph"><i class="fa-regular fa-circle-dot"></i></button>
+                    <button id="zoom-out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                </div>
+                
+                <!--<h2>Matriz de Adyacencia</h2>
+                <div id="matriz-container"></div>-->
+                <div class="intro">
+                    <h1>Recomendaciones</h1>
+                </div>
+                <div id="recomendaciones-container"></div>
+            </div>
+        </div>
+        
+        <script src="./js/buttons.js"></script>
+        <script src="./js/graph.js"></script>
+        <script src="./js/recomendations.js"></script>
+        <div class="footer">
+            <h2>Karen Esmeralda Delgado Pérez</h2>
+        </div>
+    </body>
+</html>
